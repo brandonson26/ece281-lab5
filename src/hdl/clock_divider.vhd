@@ -50,7 +50,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.all;
 
-entity clock_divider is
+entity clock_divider_controller is
 	generic ( constant k_DIV : natural := 2	); -- How many clk cycles until slow clock toggles
 											   -- Effectively, you divide the clk double this 
 											   -- number (e.g., k_DIV := 2 --> clock divider of 4)
@@ -58,9 +58,9 @@ entity clock_divider is
 			i_reset  : in std_logic;		   -- asynchronous
 			o_clk    : out std_logic		   -- divided (slow) clock
 	);
-end clock_divider;
+end clock_divider_controller;
 
-architecture countCompare of clock_divider is
+architecture countCompare of clock_divider_controller is
 	signal f_count	:	natural		:= 0;
 	signal f_clk	:	std_logic	:= '0';
 	
